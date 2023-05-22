@@ -18,7 +18,6 @@
                 })
                 console.log("les datas", jsonData.photographers);
         }
-
         console.log("photographers", photographers);
         return ({ photographers })
     }
