@@ -5,15 +5,18 @@ function photographerFactory(data) {
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
+        const blockLink = document.createElement( 'div' );
         const imgDiv = document.createElement( 'div' );
         imgDiv.setAttribute("class", "img_container");
+        blockLink.setAttribute("class", "block_link");
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
-        article.appendChild(imgDiv);
+        article.appendChild(blockLink);
+        blockLink.appendChild(imgDiv);
+        blockLink.appendChild(h2);
         imgDiv.appendChild(img);
-        article.appendChild(h2);
 
         const description = document.createElement( 'div' );
         const h3 = document.createElement( 'h3' );
