@@ -13,6 +13,7 @@
         let jsonData = await fetchData();
 
         if(jsonData) {
+            console.log("jsonData", jsonData.photographers);
             jsonData.photographers.forEach(photo => {
                     photographers.push(photo);
                 })
@@ -40,4 +41,3 @@
     };
     
     init();
-    
