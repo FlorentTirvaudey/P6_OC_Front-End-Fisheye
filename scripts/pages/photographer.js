@@ -1,4 +1,15 @@
-//Mettre le code JavaScript lié à la page photographer.html
+export class Photographe {
+    constructor(name, city, country, tagline, price, picture) {
+        this.name = name;
+        this.city = city;
+        this.country = country;
+        this.tagline = tagline;
+        this.price = price;
+        this.picture = picture;
+    }
+}
+
+
 async function fetchData() {
     try {
         const response = await fetch('../../data/photographers.json')

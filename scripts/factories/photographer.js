@@ -1,9 +1,17 @@
-function photographerFactory(data) {
-    const { name, city, country, tagline, price, portrait } = data;
+class Photographer {
+    constructor(data) {
+        const { name, city, country, tagline, price, portrait } = data;
+        this.name = name;
+        this.city = city;
+        this.country = country;
+        this.tagline = tagline;
+        this.price = price;
+        this.portrait = portrait;
+    }
 
-    const picture = `assets/images/Sample Photos/Photographers ID Photos/${portrait}`;
+    getUserCardDOM() {
+        const picture = `assets/images/Sample Photos/Photographers ID Photos/${this.portrait}`;
 
-    function getUserCardDOM() {
         const article = document.createElement( 'article' );
         const blockLink = document.createElement( 'div' );
         const imgDiv = document.createElement( 'div' );
@@ -26,19 +34,19 @@ function photographerFactory(data) {
         firstParagraphe.setAttribute("class", "tagline_content");
         secondParagraphe.setAttribute("class", "price_content");
 
-        h3.textContent = city + ', ' + country;
-        firstParagraphe.textContent = tagline;
-        secondParagraphe.textContent = price + '€\\jour';
+        h3.textContent = this.city + ', ' + this.country;
+        firstParagraphe.textContent = this.tagline;
+        secondParagraphe.textContent = this.price + '€\\jour';
 
         article.appendChild(description);
         description.appendChild(h3);
         description.appendChild(firstParagraphe);
         description.appendChild(secondParagraphe);
         
-        return (article);
+        return article;
     }
 
-    function getUserProfil() {
+    getUserProfil() {
         const firstPart = document.createElement( 'div' );
         firstPart.setAttribute("class", "first_part");
         const h1 = document.createElement( 'h1' );
@@ -62,9 +70,6 @@ function photographerFactory(data) {
         profilDescrip.appendChild(h3);
         firstPart.appendChild(profilDescrip);
 
-        return(firstPart);
-        
+        return firstPart;
     }
-
-    return { name, city, country, tagline, price, picture, getUserCardDOM, getUserProfil }
 }

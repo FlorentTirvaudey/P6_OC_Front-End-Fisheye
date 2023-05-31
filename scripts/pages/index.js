@@ -28,7 +28,7 @@
 
         photographers.forEach((photographer) => {
             console.log("PHOTOGRAPHER dans le foreach display", photographer)
-            const photographerModel = photographerFactory(photographer);
+            const photographerModel = new Photographer(photographer);
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(userCardDOM);
         });
