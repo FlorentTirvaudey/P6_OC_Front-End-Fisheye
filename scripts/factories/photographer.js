@@ -14,15 +14,20 @@ class Photographer {
 
         const article = document.createElement( 'article' );
         const blockLink = document.createElement( 'div' );
+        const hreftocontent = document.createElement( 'a' );
         const imgDiv = document.createElement( 'div' );
         imgDiv.setAttribute("class", "img_container");
         blockLink.setAttribute("class", "block_link");
+        hreftocontent.setAttribute("class", "href_content");
+        hreftocontent.setAttribute("aria-label", "lien vers la page personnel de ce photographe");
+        hreftocontent.setAttribute("href", "photographer.html");
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
         const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
+        h2.textContent = this.name;
+        hreftocontent.appendChild(imgDiv);
         article.appendChild(blockLink);
-        blockLink.appendChild(imgDiv);
+        blockLink.appendChild(hreftocontent);
         blockLink.appendChild(h2);
         imgDiv.appendChild(img);
 
