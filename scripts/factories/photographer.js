@@ -35,6 +35,7 @@ class Photographer {
         hreftocontent.setAttribute("href", newUrl);
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
+        img.setAttribute("alt", "photo de présentation de " + this.name)
         const h2 = document.createElement( 'h2' );
         h2.textContent = this.name;
         hreftocontent.appendChild(imgDiv);
