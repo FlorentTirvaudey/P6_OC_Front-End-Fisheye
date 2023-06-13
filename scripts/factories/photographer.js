@@ -1,6 +1,7 @@
 class Photographer {
     constructor(data) {
-        const { name, city, country, tagline, price, portrait } = data;
+        const { id, name, city, country, tagline, price, portrait } = data;
+        this.id = id;
         this.name = name;
         this.city = city;
         this.country = country;
@@ -12,6 +13,17 @@ class Photographer {
     getUserCardDOM() {
         const picture = `assets/images/Sample Photos/Photographers ID Photos/${this.portrait}`;
 
+        const params = new URLSearchParams();
+        params.set('id', this.id);
+        params.set('name', this.name);
+        params.set('city', this.city);
+        params.set('country', this.country);
+        params.set('tagline', this.tagline);
+        params.set('price', this.price);
+        params.set('picture', picture);
+        
+        const newUrl = `photographer.html?${params.toString()}`;
+
         const article = document.createElement( 'article' );
         const blockLink = document.createElement( 'div' );
         const hreftocontent = document.createElement( 'a' );
@@ -20,7 +32,7 @@ class Photographer {
         blockLink.setAttribute("class", "block_link");
         hreftocontent.setAttribute("class", "href_content");
         hreftocontent.setAttribute("aria-label", "lien vers la page personnel de ce photographe");
-        hreftocontent.setAttribute("href", "photographer.html");
+        hreftocontent.setAttribute("href", newUrl);
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
         const h2 = document.createElement( 'h2' );
@@ -52,10 +64,13 @@ class Photographer {
     }
 
     getUserProfil() {
+        const picture = this.portrait;
+        const textButton = 'Contactez-moi';
+
         const firstPart = document.createElement( 'div' );
         firstPart.setAttribute("class", "first_part");
-        const h1 = document.createElement( 'h1' );
-        h1.textContent = name;
+        const h2 = document.createElement( 'h2' );
+        h2.textContent = this.name;
         const imgDiv = document.createElement( 'div' );
         imgDiv.setAttribute("class", "img_container");
         const img = document.createElement( 'img' );
@@ -65,15 +80,21 @@ class Photographer {
         const firstParagraphe = document.createElement( 'p' );
         profilDescrip.setAttribute("class", "description_profil_content");
         firstParagraphe.setAttribute("class", "tagline_content");
+        const button = document.createElement( 'button' );
+        button.setAttribute("class", "contact_button");
+        button.setAttribute("onclick", "displayModal()");
+        button.textContent = textButton;
 
-        h3.textContent = city + ', ' + country;
-        firstParagraphe.textContent = tagline;
+        h3.textContent = this.city + ', ' + this.country;
+        firstParagraphe.textContent = this.tagline;
 
-        firstPart.appendChild(h1);
-        firstPart.appendChild(img);
-        profilDescrip.appendChild(firstParagraphe);
+        imgDiv.appendChild(img);
+        profilDescrip.appendChild(h2);
         profilDescrip.appendChild(h3);
+        profilDescrip.appendChild(firstParagraphe);
         firstPart.appendChild(profilDescrip);
+        firstPart.appendChild(button);
+        firstPart.appendChild(imgDiv);
 
         return firstPart;
     }
