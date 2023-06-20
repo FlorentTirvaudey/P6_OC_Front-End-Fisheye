@@ -13,10 +13,12 @@ async function getOnePhotographer() {
     return ({ photographerProfil });
 }
 
-async function displayDataProfil(photographerProfil) {
+async function getPhotographersHeader(photographerProfil) {
     const photographersHeader = document.querySelector(".photograph-header");
-    const photographer = photographerProfil.getUserProfil();
-    photographersHeader.appendChild(photographer);
+}
+
+async function displayDataProfil(photographerProfil) {
+    photographerProfil.appendUserProfilHeader();
 };
 
 async function initProfilPage() {

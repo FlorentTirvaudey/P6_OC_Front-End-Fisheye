@@ -64,39 +64,35 @@ class Photographer {
         return article;
     }
 
-    getUserProfil() {
+    appendUserProfilHeader() {
         const picture = this.portrait;
-        const textButton = 'Contactez-moi';
 
-        const firstPart = document.createElement( 'div' );
-        firstPart.setAttribute("class", "first_part");
+        const imgDiv = document.querySelector(".img_container");
+        const profilDescrip = document.querySelector(".description_profil_content");
+
         const h2 = document.createElement( 'h2' );
         h2.textContent = this.name;
-        const imgDiv = document.createElement( 'div' );
-        imgDiv.setAttribute("class", "img_container");
+
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
-        const profilDescrip = document.createElement( 'div' );
+        
         const h3 = document.createElement( 'h3' );
-        const firstParagraphe = document.createElement( 'p' );
-        profilDescrip.setAttribute("class", "description_profil_content");
-        firstParagraphe.setAttribute("class", "tagline_content");
-        const button = document.createElement( 'button' );
-        button.setAttribute("class", "contact_button");
-        button.setAttribute("onclick", "displayModal()");
-        button.textContent = textButton;
-
         h3.textContent = this.city + ', ' + this.country;
+
+        const firstParagraphe = document.createElement( 'p' );
         firstParagraphe.textContent = this.tagline;
+        firstParagraphe.setAttribute("class", "tagline_content");
 
         imgDiv.appendChild(img);
         profilDescrip.appendChild(h2);
         profilDescrip.appendChild(h3);
         profilDescrip.appendChild(firstParagraphe);
-        firstPart.appendChild(profilDescrip);
-        firstPart.appendChild(button);
-        firstPart.appendChild(imgDiv);
 
-        return firstPart;
+        return { imgDiv, profilDescrip };
+    }
+
+    getImagesPhotographProfil() {
+        const photos = `assets/images/Sample Photos/Photographers ID Photos/${this.portrait}`;
+
     }
 }
