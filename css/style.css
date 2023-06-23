@@ -94,6 +94,10 @@ h1 {
 *
 */
 
+.main_profil_page {
+    margin: 50px 100px;
+}
+
 .photograph-header .description_profil_content {
     display: flex;
     flex-direction: column;
@@ -129,4 +133,32 @@ h1 {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.photograph-photos .select_container {
+    margin-bottom: 50px;
+}
+
+.photograph-photos .select_container span{
+    margin-right: 20px;
+    font-size: 1.6em;
+    font-weight: bold;
+}
+
+.photograph-photos .photos_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 200px;
+}
+
+.photograph-photos article {
+    height: 600px;
+    overflow: hidden;
+}
+
+.photograph-photos img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
 }

@@ -90,9 +90,44 @@ class Photographer {
 
         return { imgDiv, profilDescrip };
     }
+}
 
-    getImagesPhotographProfil() {
-        const photos = `assets/images/Sample Photos/Photographers ID Photos/${this.portrait}`;
+class Media {
+    constructor(data, photographerProfil) {
+        const { id, photographerId, title, image, video, likes, date, price } = data;
+        this.id = id;
+        this.photographerId = photographerId;
+        this.title = title;
+        this.image = image;
+        this.video = video;
+        this.likes = likes;
+        this.date = date;
+        this.price = price;
+        this.photographerProfil = photographerProfil;
+    }
 
+    getUserPhotoCardDOM() {
+        const completName = this.photographerProfil.name;
+        const nameSplit = completName.split(" ");
+        const firstname = nameSplit[0];
+    
+        const photosPath = `assets/images/Sample Photos/${firstname}/${this.image}`;
+        const videoPath = `assets/images/Sample Photos/${firstname}/${this.video}`;
+
+        const article = document.createElement( 'article' );
+
+        const img = document.createElement( 'img' );
+        const like = document.createElement( 'p' );
+
+        if(this.image) {
+            img.setAttribute('src', photosPath);
+        } else {
+            img.setAttribute('src', videoPath);
+        }
+
+        article.appendChild(img);
+        article.appendChild(like);
+
+        return article;
     }
 }

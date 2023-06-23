@@ -6,10 +6,10 @@
     display: flex;
     background-color: #FAFAFA;
     height: 300px;
-    margin: 50px 100px 0px 100px;
     align-items: center;
     justify-content: space-between;
-    padding: 0px 100px;
+    padding: 50px 100px;
+    margin-bottom: 20px;
 }
 
 .contact_button {
