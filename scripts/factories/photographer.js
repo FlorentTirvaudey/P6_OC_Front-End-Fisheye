@@ -117,7 +117,24 @@ class Media {
         const article = document.createElement( 'article' );
 
         const img = document.createElement( 'img' );
-        const like = document.createElement( 'p' );
+
+        const imgDiv = document.createElement( 'div' );
+        imgDiv.setAttribute("class", "image_container");
+
+        const cardDescrip = document.createElement( 'div' );
+        cardDescrip.setAttribute("class", "description_part");
+
+        const likeDiv = document.createElement( 'div' );
+        likeDiv.setAttribute("class", "like_part");
+
+        const heart = document.createElement( 'i' );
+        heart.setAttribute("class", "fa-solid fa-heart");
+
+        const nbLike = document.createElement( 'p' );
+        nbLike.textContent = this.likes;
+
+        const titleCard = document.createElement( 'p' );
+        titleCard.textContent = this.title;
 
         if(this.image) {
             img.setAttribute('src', photosPath);
@@ -125,8 +142,15 @@ class Media {
             img.setAttribute('src', videoPath);
         }
 
-        article.appendChild(img);
-        article.appendChild(like);
+        likeDiv.appendChild(nbLike);
+        likeDiv.appendChild(heart);
+
+        cardDescrip.appendChild(titleCard);
+        cardDescrip.appendChild(likeDiv);
+
+        imgDiv.appendChild(img);
+        article.appendChild(imgDiv);
+        article.appendChild(cardDescrip);
 
         return article;
     }
