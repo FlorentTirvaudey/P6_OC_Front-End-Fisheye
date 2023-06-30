@@ -31,14 +31,15 @@ async function getOnePhotographer() {
     let portrait = urlParams.get('picture');
 
     const photographerProfil = new Photographer({id, name, city, country, tagline, price, portrait});
-    console.log(photographerProfil);
 
     return ({ photographerProfil });
 }
 
 async function displayDataProfil(photographerProfil) {
-    const photographersHeader = document.querySelector(".photograph-header");
+    const photographeAsidePrice = document.querySelector(".info_container");
+    const asidePrice = photographerProfil.setPricePhotographerAside();
     photographerProfil.appendUserProfilHeader();
+    photographeAsidePrice.appendChild(asidePrice);
 };
 
 async function displayMedia(media, photographerProfil) {
@@ -46,7 +47,6 @@ async function displayMedia(media, photographerProfil) {
 
     media.forEach(medias => {
         if(medias.photographerId == photographerProfil.id) {
-            console.log("medias", medias);
             const mediaModel = new Media(medias, photographerProfil);
             const mediaDOM = mediaModel.getUserPhotoCardDOM();
             mediaPhotographer.appendChild(mediaDOM);

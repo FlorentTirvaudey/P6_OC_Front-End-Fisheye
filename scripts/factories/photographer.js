@@ -36,6 +36,11 @@ class Photographer {
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
         img.setAttribute("alt", "photo de présentation de " + this.name)
+
+        if(this.name != "Tracy Galindo") {
+            img.setAttribute("class", "img_modify");
+        }
+
         const h2 = document.createElement( 'h2' );
         h2.textContent = this.name;
         hreftocontent.appendChild(imgDiv);
@@ -64,7 +69,7 @@ class Photographer {
         return article;
     }
 
-    appendUserProfilHeader() {
+    appendUserProfilHeader() { // la modale lightbox doit se faire ici, onclick sur l'image pour set la src de la balise img de la modale avec this.picture
         const picture = this.portrait;
 
         const imgDiv = document.querySelector(".img_container");
@@ -75,6 +80,10 @@ class Photographer {
 
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
+
+        if(this.name != "Tracy Galindo") {
+            img.setAttribute("class", "img_modify");
+        }
         
         const h3 = document.createElement( 'h3' );
         h3.textContent = this.city + ', ' + this.country;
@@ -89,6 +98,15 @@ class Photographer {
         profilDescrip.appendChild(firstParagraphe);
 
         return { imgDiv, profilDescrip };
+    }
+
+    setPricePhotographerAside() {
+        const asidePrice = document.createElement( 'div' );
+        
+        asidePrice.setAttribute("class", "price_aside");
+        asidePrice.textContent = this.price + "€ / jour";
+
+        return asidePrice;
     }
 }
 
@@ -137,10 +155,16 @@ class Media {
         titleCard.textContent = this.title;
 
         if(this.image) {
+            // const img = document.createElement( 'img' );
             img.setAttribute('src', photosPath);
+            // imgDiv.appendChild(img);
         } else {
             img.setAttribute('src', videoPath);
+            // const video = document.createElement( 'video' );
+            // video.setAttribute('src', videoPath);
+            // imgDiv.appendChild(video);
         }
+        imgDiv.appendChild(img);
 
         likeDiv.appendChild(nbLike);
         likeDiv.appendChild(heart);
@@ -148,7 +172,6 @@ class Media {
         cardDescrip.appendChild(titleCard);
         cardDescrip.appendChild(likeDiv);
 
-        imgDiv.appendChild(img);
         article.appendChild(imgDiv);
         article.appendChild(cardDescrip);
 

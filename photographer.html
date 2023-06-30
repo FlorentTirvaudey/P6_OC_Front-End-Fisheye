@@ -26,6 +26,13 @@
         </div>
         <div class="photos_container"></div>
       </section>
+      <aside class="info_container">
+        <div class="likes_aside">
+          <span>297 081</span>
+          <i class="fa-solid fa-heart"></i>
+        </div>
+        <div class="price_aside"></div>
+      </aside>
     </main>
     <div id="contact_modal">
 			<div class="modal">
@@ -38,10 +45,36 @@
 						<label>Prénom</label>
 						<input />
 					</div>
+          <div>
+						<label>Nom</label>
+						<input />
+					</div>
+          <div>
+						<label>Email</label>
+						<input />
+					</div>
+          <div>
+						<label>Votre message</label>
+						<textarea name="" id="" cols="30" rows="10"></textarea>
+					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>
+    <div class="lightbox_modal">
+      <div class="lightbox_container">
+        <div class="arrow_left"></div>
+        <div class="lightbox_card_container">
+          <div class="image_lightbox_container">
+            <img src="" alt="">
+          </div>
+        </div>
+        <div class="cross">
+          <img src="assets/icons/close.svg" onclick="closeModal()" />
+        </div>
+        <div class="arrow_right"></div>
+      </div>
+    </div>
     <script src="scripts/factories/photographer.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>

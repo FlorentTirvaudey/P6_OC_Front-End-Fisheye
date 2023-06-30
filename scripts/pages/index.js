@@ -13,13 +13,10 @@
         let jsonData = await fetchData();
 
         if(jsonData) {
-            console.log("jsonData", jsonData.photographers);
             jsonData.photographers.forEach(photo => {
                     photographers.push(photo);
                 })
-                console.log("les datas", jsonData.photographers);
         }
-        console.log("photographers", photographers);
         return ({ photographers })
     }
 
@@ -27,7 +24,6 @@
         const photographersSection = document.querySelector(".photographer_section");
 
         photographers.forEach((photographer) => {
-            console.log("PHOTOGRAPHER dans le foreach display", photographer)
             const photographerModel = new Photographer(photographer);
             const userCardDOM = photographerModel.getUserCardDOM();
             photographersSection.appendChild(userCardDOM);
