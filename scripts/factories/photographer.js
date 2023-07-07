@@ -157,14 +157,14 @@ class Media {
         if(this.image) {
             // const img = document.createElement( 'img' );
             img.setAttribute('src', photosPath);
-            // imgDiv.appendChild(img);
+            imgDiv.appendChild(img);
         } else {
             img.setAttribute('src', videoPath);
-            // const video = document.createElement( 'video' );
-            // video.setAttribute('src', videoPath);
-            // imgDiv.appendChild(video);
+            const video = document.createElement( 'video' );
+            video.setAttribute('src', videoPath);
+            imgDiv.appendChild(video);
         }
-        imgDiv.appendChild(img);
+        // imgDiv.appendChild(img);
 
         likeDiv.appendChild(nbLike);
         likeDiv.appendChild(heart);
@@ -176,5 +176,9 @@ class Media {
         article.appendChild(cardDescrip);
 
         return article;
+    }
+
+    addLikes() {
+    
     }
 }

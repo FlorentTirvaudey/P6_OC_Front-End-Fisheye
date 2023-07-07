@@ -44,13 +44,19 @@ async function displayDataProfil(photographerProfil) {
 
 async function displayMedia(media, photographerProfil) {
     const mediaPhotographer = document.querySelector(".photos_container");
+    const nbLikesTotal = document.querySelector(".nb_likes_total");
+    let totalLikes = 0;
 
     media.forEach(medias => {
         if(medias.photographerId == photographerProfil.id) {
             const mediaModel = new Media(medias, photographerProfil);
             const mediaDOM = mediaModel.getUserPhotoCardDOM();
             mediaPhotographer.appendChild(mediaDOM);
+
+            totalLikes += mediaModel.likes;
         }
+        nbLikesTotal.textContent = totalLikes;
+        console.log(totalLikes);
     })
 }
 
@@ -60,6 +66,10 @@ async function initProfilPage() {
 
     displayDataProfil(photographerProfil);
     displayMedia(media, photographerProfil);
+}
+
+async function updateLikes() {
+    
 }
 
 initProfilPage();
