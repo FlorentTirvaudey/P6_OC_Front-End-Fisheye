@@ -138,6 +138,23 @@ class Media {
 
         const imgDiv = document.createElement( 'div' );
         imgDiv.setAttribute("class", "image_container");
+        imgDiv.addEventListener('click', e => {
+
+            const imgSrc = document.querySelector(".img_lightbox");
+            const videoSrc = document.querySelector(".video_lightbox");
+            
+            if(this.image) {
+                imgSrc.setAttribute('src', photosPath);
+                imgSrc.style.display = "block";
+                videoSrc.style.display = "none";
+            } else {
+                videoSrc.setAttribute('src', videoPath);
+                videoSrc.style.display = "block";
+                imgSrc.style.display = "none";
+            }
+            
+            displayLightboxModal();
+        })
 
         const cardDescrip = document.createElement( 'div' );
         cardDescrip.setAttribute("class", "description_part");
