@@ -35,6 +35,15 @@ async function getOnePhotographer() {
     return ({ photographerProfil });
 }
 
+// async function updateLikes(media, photographerProfil) {
+//     const nbLikesTotal = document.querySelector(".nb_likes_total");
+//     let totalLikes = 0;
+
+//     const mediaModel = new Media(medias, photographerProfil);
+
+//     totalLikes += mediaModel.likes;
+// }
+
 async function displayDataProfil(photographerProfil) {
     const photographeAsidePrice = document.querySelector(".info_container");
     const asidePrice = photographerProfil.setPricePhotographerAside();
@@ -58,6 +67,7 @@ async function displayMedia(media, photographerProfil) {
         nbLikesTotal.textContent = totalLikes;
         console.log(totalLikes);
     })
+    
 }
 
 async function initProfilPage() {
@@ -66,10 +76,6 @@ async function initProfilPage() {
 
     displayDataProfil(photographerProfil);
     displayMedia(media, photographerProfil);
-}
-
-async function updateLikes() {
-    
 }
 
 initProfilPage();

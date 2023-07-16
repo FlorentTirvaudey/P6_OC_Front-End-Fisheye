@@ -150,12 +150,16 @@ class Media {
 
         const nbLike = document.createElement( 'p' );
         nbLike.textContent = this.likes;
+        
+        heart.addEventListener('click', () => {
+            nbLike.textContent = this.likes++;
+        });
 
         const titleCard = document.createElement( 'p' );
         titleCard.textContent = this.title;
 
         if(this.image) {
-            // const img = document.createElement( 'img' );
+            const img = document.createElement( 'img' );
             img.setAttribute('src', photosPath);
             imgDiv.appendChild(img);
         } else {
@@ -178,7 +182,4 @@ class Media {
         return article;
     }
 
-    addLikes() {
-    
-    }
 }
