@@ -99,3 +99,74 @@ form textarea {
     border-radius: 5px;
     resize: none;
 }
+
+/*
+*
+*   Lightbox Modal
+*
+*/
+#lightbox_modal {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.display_modal {
+    position: relative;
+    height: 90%;
+}
+
+.display_modal button {
+    border: none;
+    background-color: white;
+}
+
+button i {
+    color: #901C1C;
+    font-size: 3.0em;
+}
+
+.display_modal .close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: #901C1C;
+    font-size: 3.0em;
+    z-index: 1000;
+}
+
+.lightbox_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+.image_lightbox_container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.image_lightbox_container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.image_lightbox_container {
+    margin: 40px;
+    height: 100%;
+    width: 1000px;
+}

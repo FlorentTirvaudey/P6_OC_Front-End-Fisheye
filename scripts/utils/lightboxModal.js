@@ -1,7 +1,6 @@
-function displayLightboxModal(e) {
+function displayLightboxModal() {
     const modal = document.getElementById("lightbox_modal");
-
-    modal.style.display = "block";
+    modal.style.display = "flex";
 }
 
 function closeLightboxModal() {

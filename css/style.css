@@ -238,18 +238,3 @@ h1 {
     margin-right: 5px;
 }
 
-/*
-*
-*   Lightbox Modal
-*
-*/
-.lightbox_modal {
-    display: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: white;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-}

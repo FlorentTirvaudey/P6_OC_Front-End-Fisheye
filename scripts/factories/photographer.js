@@ -144,13 +144,13 @@ class Media {
             const videoSrc = document.querySelector(".video_lightbox");
             
             if(this.image) {
+                displayLightboxModal();
                 imgSrc.setAttribute('src', photosPath);
-                imgSrc.style.display = "block";
-                videoSrc.style.display = "none";
+                videoSrc.removeAttribute('src', videoPath);
             } else {
+                displayLightboxModal();
                 videoSrc.setAttribute('src', videoPath);
-                videoSrc.style.display = "block";
-                imgSrc.style.display = "none";
+                imgSrc.removeAttribute('src', photosPath);
             }
             
             displayLightboxModal();
