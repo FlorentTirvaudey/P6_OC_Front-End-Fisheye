@@ -196,6 +196,7 @@ h1 {
 
 .photograph-photos .image_container {
     height: 450px;
+    cursor: pointer;
 }
 
 .photograph-photos .description_part {

@@ -139,21 +139,8 @@ class Media {
         const imgDiv = document.createElement( 'div' );
         imgDiv.setAttribute("class", "image_container");
         imgDiv.addEventListener('click', e => {
+            openElementInLightboxModal(e, this.title);
 
-            const imgSrc = document.querySelector(".img_lightbox");
-            const videoSrc = document.querySelector(".video_lightbox");
-            
-            if(this.image) {
-                displayLightboxModal();
-                imgSrc.setAttribute('src', photosPath);
-                videoSrc.removeAttribute('src', videoPath);
-            } else {
-                displayLightboxModal();
-                videoSrc.setAttribute('src', videoPath);
-                imgSrc.removeAttribute('src', photosPath);
-            }
-            
-            displayLightboxModal();
         })
 
         const cardDescrip = document.createElement( 'div' );
@@ -169,6 +156,7 @@ class Media {
         nbLike.textContent = this.likes;
         
         heart.addEventListener('click', () => {
+            console.log("j'ai cliqué")
             nbLike.textContent = this.likes++;
         });
 
