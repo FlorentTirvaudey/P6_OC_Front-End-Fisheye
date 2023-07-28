@@ -66,8 +66,21 @@ async function displayMedia(media, photographerProfil) {
         }
         nbLikesTotal.textContent = totalLikes;
         console.log(totalLikes);
+    })   
+}
+
+async function buildTabMedia(media, photographerProfil) {
+    let tabResult = [];
+
+    media.forEach(medias => {
+        if(medias.photographerId == photographerProfil.id) {
+            const mediaModel = new Media(medias, photographerProfil);
+            tabResult.push(mediaModel);
+            console.log("je vais être push à tabResult", tabResult)
+        }
     })
-    
+    console.log("tabresult après foreach", tabResult);
+    return tabResult;
 }
 
 async function initProfilPage() {
@@ -76,6 +89,7 @@ async function initProfilPage() {
 
     displayDataProfil(photographerProfil);
     displayMedia(media, photographerProfil);
+    buildTabMedia(media, photographerProfil);
 }
 
 initProfilPage();

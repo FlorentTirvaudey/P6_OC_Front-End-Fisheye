@@ -125,6 +125,9 @@ class Media {
     }
 
     getUserPhotoCardDOM() {
+        const leftButton = document.querySelector(".left_button");
+        const rightButton = document.querySelector(".right_button");
+
         const completName = this.photographerProfil.name;
         const nameSplit = completName.split(" ");
         const firstname = nameSplit[0];
