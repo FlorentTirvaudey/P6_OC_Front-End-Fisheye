@@ -22,11 +22,15 @@
       <section class="photograph-photos">
         <div class="select_container">
           <span>Trier par</span>
-          <select name="sort_items" id="sort_items">
-            <option value="popularite">Popularité</option>
-            <option value="date">Date</option>
-            <option value="titre">Titre</option>
-          </select>
+          <div role="listbox" name="sort_items" id="sort_items">
+            <div role="option" class="option border" value="popularite">
+              Popularité
+              <button><i class="fa-solid fa-chevron-up"></i></button>
+            <!-- <button><i class="fa-solid fa-chevron-down"></i></button> -->
+            </div>
+            <div role="option" class="option border" value="date">Date</div>
+            <div role="option" class="option" value="titre">Titre</div>
+          </div>
         </div>
         <div class="photos_container"></div>
       </section>
@@ -71,13 +75,13 @@
       <div class="display_modal">
         <i class="fa-solid fa-xmark close" onclick="closeLightboxModal()"></i>
         <div class="lightbox_container">
-          <button class="left_button"><i class="fa-solid fa-chevron-left"></i></button>
+          <button class="left_button"><i class="fa-solid fa-chevron-left chevron"></i></button>
           <div class="card_container">
             <div class="image_lightbox_container">
             </div>
             <p class="title_card"></p>
           </div>
-          <button class="right_button"><i class="fa-solid fa-chevron-right"></i></button>
+          <button class="right_button"><i class="fa-solid fa-chevron-right chevron"></i></button>
         </div>
       </div>
       </div>

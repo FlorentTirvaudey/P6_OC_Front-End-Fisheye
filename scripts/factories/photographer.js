@@ -112,7 +112,7 @@ class Photographer {
 
 class Media {
     constructor(data, photographerProfil) {
-        const { id, photographerId, title, image, video, likes, date, price } = data;
+        const { id, photographerId, title, image, video, likes, date, price} = data;
         this.id = id;
         this.photographerId = photographerId;
         this.title = title;
@@ -125,6 +125,11 @@ class Media {
     }
 
     getUserPhotoCardDOM() {
+        // console.log("this.likes", this.likes)
+        // let totalLikeTemp =+ this.likes;
+        // console.log("totallikes", totalLikeTemp)
+        // console.log("totalikes dans la classe Media", this.totalLikes)
+        
         const leftButton = document.querySelector(".left_button");
         const rightButton = document.querySelector(".right_button");
 
@@ -143,7 +148,7 @@ class Media {
         imgDiv.setAttribute("class", "image_container");
         imgDiv.addEventListener('click', e => {
             openElementInLightboxModal(e, this.title);
-            console.log("je suis l'élément e", e);
+            console.log("je suis l'élément e", this.image);
 
             leftButton.addEventListener('click', () => {
 
@@ -161,13 +166,17 @@ class Media {
 
         const heart = document.createElement( 'i' );
         heart.setAttribute("class", "fa-solid fa-heart");
+        heart.setAttribute("id", "heart_likes");
 
         const nbLike = document.createElement( 'p' );
         nbLike.textContent = this.likes;
         
         heart.addEventListener('click', () => {
-            console.log("j'ai cliqué")
-            nbLike.textContent = this.likes++;
+            let likesUpdate = this.likes + 1;
+            nbLike.textContent = likesUpdate;
+            // let totalikesUpdate = this.totalLikes + 1;
+            // console.log("totallikes", nbLike.textContent)
+            // console.log("totallikes addeventlistener", totalikesUpdate)
         });
 
         const titleCard = document.createElement( 'p' );

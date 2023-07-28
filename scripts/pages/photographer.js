@@ -35,14 +35,21 @@ async function getOnePhotographer() {
     return ({ photographerProfil });
 }
 
-// async function updateLikes(media, photographerProfil) {
-//     const nbLikesTotal = document.querySelector(".nb_likes_total");
-//     let totalLikes = 0;
+async function updateLikes(media, photographerProfil) {
+    let totalLikes = 0;
 
-//     const mediaModel = new Media(medias, photographerProfil);
+    media.forEach(medias => {
+        if(medias.photographerId == photographerProfil.id) {
+            const mediaModel = new Media(medias, photographerProfil);
+            totalLikes += mediaModel.likes;
+            console.log("totalikes updateLikes", totalLikes)
 
-//     totalLikes += mediaModel.likes;
-// }
+        }
+    })    
+
+    return totalLikes;
+}
+
 
 async function displayDataProfil(photographerProfil) {
     const photographeAsidePrice = document.querySelector(".info_container");
@@ -52,21 +59,26 @@ async function displayDataProfil(photographerProfil) {
 };
 
 async function displayMedia(media, photographerProfil) {
+    let result = updateLikes(media, photographerProfil);
+    
     const mediaPhotographer = document.querySelector(".photos_container");
     const nbLikesTotal = document.querySelector(".nb_likes_total");
-    let totalLikes = 0;
-
+    
     media.forEach(medias => {
         if(medias.photographerId == photographerProfil.id) {
             const mediaModel = new Media(medias, photographerProfil);
+            // totalLikes += mediaModel.likes;
+            // console.log("totalikes dans le foreach de display", totalLikes)
+
             const mediaDOM = mediaModel.getUserPhotoCardDOM();
             mediaPhotographer.appendChild(mediaDOM);
 
-            totalLikes += mediaModel.likes;
+            mediaModel.totalLikes += mediaModel.likes;
+            console.log("c'est quoi ça", mediaModel.totalLikes);
+            nbLikesTotal.textContent = mediaModel.totalLikes;
         }
-        nbLikesTotal.textContent = totalLikes;
-        console.log(totalLikes);
     })   
+
 }
 
 async function buildTabMedia(media, photographerProfil) {
@@ -76,10 +88,10 @@ async function buildTabMedia(media, photographerProfil) {
         if(medias.photographerId == photographerProfil.id) {
             const mediaModel = new Media(medias, photographerProfil);
             tabResult.push(mediaModel);
-            console.log("je vais être push à tabResult", tabResult)
+            // console.log("je vais être push à tabResult", tabResult)
         }
     })
-    console.log("tabresult après foreach", tabResult);
+    // console.log("tabresult après foreach", tabResult);
     return tabResult;
 }
 

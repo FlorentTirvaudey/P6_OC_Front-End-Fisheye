@@ -17,7 +17,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 50px 100px;
-    margin-bottom: 20px;
+    margin-bottom: 45px;
 }
 
 .contact_button {
@@ -161,6 +161,7 @@ button i {
     color: #901C1C;
     font-size: 3.0em;
     z-index: 1000;
+    cursor: pointer;
 }
 
 .lightbox_container {
@@ -177,12 +178,16 @@ button i {
     margin-top: 10px;
 }
 
+.lightbox_container .chevron {
+    cursor: pointerpadding: 50px 100px;
+}
 
 .image_lightbox_container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
+    box-shadow: 5px 0px 0px 0px rgba(0, 0, 0, 0.2);
 }
 
 .image_lightbox_container video {
