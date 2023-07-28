@@ -143,7 +143,14 @@ class Media {
         imgDiv.setAttribute("class", "image_container");
         imgDiv.addEventListener('click', e => {
             openElementInLightboxModal(e, this.title);
+            console.log("je suis l'élément e", e);
 
+            leftButton.addEventListener('click', () => {
+
+            })
+            rightButton.addEventListener('click', () => {
+                
+            })
         })
 
         const cardDescrip = document.createElement( 'div' );

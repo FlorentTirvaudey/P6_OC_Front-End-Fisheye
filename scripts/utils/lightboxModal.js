@@ -34,3 +34,11 @@ function openElementInLightboxModal(element, title) {
         titleMedia.innerHTML = title;
         }
 }
+
+function switchMediaLeft(element) {
+    let tabResult = buildTabMedia()
+}
+
+function switchMediaRight(element) {
+
+}
