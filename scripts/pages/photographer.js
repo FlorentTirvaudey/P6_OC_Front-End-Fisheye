@@ -30,78 +30,91 @@ async function getOnePhotographer() {
     let price = urlParams.get('price');
     let portrait = urlParams.get('picture');
 
+
     const photographerProfil = new Photographer({id, name, city, country, tagline, price, portrait});
 
     return ({ photographerProfil });
 }
 
-async function updateLikes(media, photographerProfil) {
-    let totalLikes = 0;
+// async function updateLikes(media, photographerProfil) {
+//     let totalLikes = 0;
 
-    media.forEach(medias => {
-        if(medias.photographerId == photographerProfil.id) {
-            const mediaModel = new Media(medias, photographerProfil);
-            totalLikes += mediaModel.likes;
-            console.log("totalikes updateLikes", totalLikes)
+//     media.forEach(medias => {
+//         if(medias.photographerId == photographerProfil.id) {
+//             const mediaModel = new Media(medias, photographerProfil);
+//             totalLikes += mediaModel.likes;
+//             console.log("totalikes updateLikes", totalLikes)
 
-        }
-    })    
+//         }
+//     })    
 
-    return totalLikes;
-}
+//     return totalLikes;
+// }
 
 
 async function displayDataProfil(photographerProfil) {
-    const photographeAsidePrice = document.querySelector(".info_container");
-    const asidePrice = photographerProfil.setPricePhotographerAside();
-    photographerProfil.appendUserProfilHeader();
-    photographeAsidePrice.appendChild(asidePrice);
+    // const asidePrice = photographerProfil.setPricePhotographerAside();
+    new ProfilPrice(photographerProfil).setPricePhotographerAside();
+    new ProfilHeader(photographerProfil).appendUserProfilHeader();
+    // photographeAsidePrice.appendChild(asidePrice);
 };
 
 async function displayMedia(media, photographerProfil) {
-    let result = updateLikes(media, photographerProfil);
+    // let result = updateLikes(media, photographerProfil);
     
     const mediaPhotographer = document.querySelector(".photos_container");
-    const nbLikesTotal = document.querySelector(".nb_likes_total");
+    // const nbLikesTotal = document.querySelector(".nb_likes_total");
     
-    media.forEach(medias => {
+    let mediaPhoto = [];
+
+    media.map(medias => {
         if(medias.photographerId == photographerProfil.id) {
-            const mediaModel = new Media(medias, photographerProfil);
+            if(medias.image) {
+                mediaPhoto.push(new MediaFactory(medias, photographerProfil, 'image'));
+            } else if(medias.video) {
+                mediaPhoto.push(new MediaFactory(medias, photographerProfil, 'video'));
+            }
             // totalLikes += mediaModel.likes;
             // console.log("totalikes dans le foreach de display", totalLikes)
 
-            const mediaDOM = mediaModel.getUserPhotoCardDOM();
-            mediaPhotographer.appendChild(mediaDOM);
+            // const mediaDOM = mediaModel.getUserPhotoCardDOM();
+            // mediaPhotographer.appendChild(mediaDOM);
 
-            mediaModel.totalLikes += mediaModel.likes;
-            console.log("c'est quoi ça", mediaModel.totalLikes);
-            nbLikesTotal.textContent = mediaModel.totalLikes;
+            // mediaModel.totalLikes += mediaModel.likes;
+            // console.log("c'est quoi ça", mediaModel.totalLikes);
+            // nbLikesTotal.textContent = mediaModel.totalLikes;
         }
-    })   
-
-}
-
-async function buildTabMedia(media, photographerProfil) {
-    let tabResult = [];
-
-    media.forEach(medias => {
-        if(medias.photographerId == photographerProfil.id) {
-            const mediaModel = new Media(medias, photographerProfil);
-            tabResult.push(mediaModel);
-            // console.log("je vais être push à tabResult", tabResult)
-        }
+    })    
+    mediaPhoto.map(media => {
+        const mediaToDisplay = new MediaProfil(media).getUserPhotoCardDOM();
+        mediaPhotographer.appendChild(mediaToDisplay);
     })
-    // console.log("tabresult après foreach", tabResult);
-    return tabResult;
+
 }
+
+// async function buildTabMedia(media, photographerProfil) {
+//     let tabResult = [];
+
+//     media.forEach(medias => {
+//         if(medias.photographerId == photographerProfil.id) {
+//             const mediaModel = new Media(medias, photographerProfil);
+//             tabResult.push(mediaModel);
+//             // console.log("je vais être push à tabResult", tabResult)
+//         }
+//     })
+//     // console.log("tabresult après foreach", tabResult);
+//     return tabResult;
+// }
 
 async function initProfilPage() {
     const { photographerProfil } = await getOnePhotographer();
     const { media } = await getMedia();
 
+    
+
     displayDataProfil(photographerProfil);
     displayMedia(media, photographerProfil);
-    buildTabMedia(media, photographerProfil);
+    // buildTabMedia(media, photographerProfil);
 }
 
 initProfilPage();
