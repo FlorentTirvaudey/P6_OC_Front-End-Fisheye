@@ -53,10 +53,8 @@ async function getOnePhotographer() {
 
 
 async function displayDataProfil(photographerProfil) {
-    // const asidePrice = photographerProfil.setPricePhotographerAside();
     new ProfilPrice(photographerProfil).setPricePhotographerAside();
     new ProfilHeader(photographerProfil).appendUserProfilHeader();
-    // photographeAsidePrice.appendChild(asidePrice);
 };
 
 async function displayMedia(media, photographerProfil) {
@@ -86,8 +84,8 @@ async function displayMedia(media, photographerProfil) {
         }
     })    
     mediaPhoto.map(media => {
-        const mediaToDisplay = new MediaProfil(media).getUserPhotoCardDOM();
-        mediaPhotographer.appendChild(mediaToDisplay);
+        const mediaToDisplay = createIframeLightbox(new MediaProfil(media));
+        mediaPhotographer.appendChild(mediaToDisplay.getUserPhotoCardDOM());
     })
 
 }
@@ -109,8 +107,6 @@ async function displayMedia(media, photographerProfil) {
 async function initProfilPage() {
     const { photographerProfil } = await getOnePhotographer();
     const { media } = await getMedia();
-
-    
 
     displayDataProfil(photographerProfil);
     displayMedia(media, photographerProfil);

@@ -1,31 +1,20 @@
 class MediaProfil {
     constructor(media) {
         this._media = media;
+
+        this.imgDiv = document.createElement( 'div' );
+        this.imgDiv.setAttribute("class", "image_container");
+    }
+
+    get media() {
+        return this._media;
     }
 
     getUserPhotoCardDOM() {
-        
-        // console.log("this.likes", this.likes)
-        // let totalLikeTemp =+ this.likes;
-        // console.log("totallikes", totalLikeTemp)
-        // console.log("totalikes dans la classe Media", this.totalLikes)
-        
-        // const leftButton = document.querySelector(".left_button");
-        // const rightButton = document.querySelector(".right_button");
-
-        // const completName = this.photographerProfil.name;
-        // const nameSplit = completName.split(" ");
-        // const firstname = nameSplit[0];
-    
-        // const photosPath = `assets/images/Sample Photos/${firstname}/${this.image}`;
-        // const videoPath = `assets/images/Sample Photos/${firstname}/${this.video}`;
-
         const article = document.createElement( 'article' );
 
-        // const img = document.createElement( 'img' );
-
-        const imgDiv = document.createElement( 'div' );
-        imgDiv.setAttribute("class", "image_container");
+        // const imgDiv = document.createElement( 'div' );
+        // imgDiv.setAttribute("class", "image_container");
         // imgDiv.addEventListener('click', e => {
         //     openElementInLightboxModal(e, this.title);
         //     console.log("je suis l'élément e", this.image);
@@ -62,22 +51,9 @@ class MediaProfil {
         const titleCard = document.createElement( 'p' );
         titleCard.textContent = this._media.title;
 
-
         const mediaType = document.createElement( this._media.type );
         mediaType.setAttribute("src", this._media.path)
-        imgDiv.appendChild(mediaType);
-
-        // if(this._media.image) {
-        //     const img = document.createElement( 'img' );
-        //     img.setAttribute('src', photosPath);
-        //     imgDiv.appendChild(img);
-        // } else {
-        //     img.setAttribute('src', videoPath);
-        //     const video = document.createElement( 'video' );
-        //     video.setAttribute('src', videoPath);
-        //     imgDiv.appendChild(video);
-        // }
-        // imgDiv.appendChild(img);
+        this.imgDiv.appendChild(mediaType);
 
         likeDiv.appendChild(nbLike);
         likeDiv.appendChild(heart);
@@ -85,7 +61,7 @@ class MediaProfil {
         cardDescrip.appendChild(titleCard);
         cardDescrip.appendChild(likeDiv);
 
-        article.appendChild(imgDiv);
+        article.appendChild(this.imgDiv);
         article.appendChild(cardDescrip);
 
         return article;
