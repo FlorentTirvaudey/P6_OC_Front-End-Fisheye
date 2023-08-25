@@ -132,7 +132,7 @@ form textarea {
     width: 100%;
     height: 100%;
     background-color: white;
-    z-index: 2;
+    z-index: 1000;
     top: 0;
     left: 0;
     justify-content: center;
@@ -179,7 +179,8 @@ button i {
 }
 
 .lightbox_container .chevron {
-    cursor: pointerpadding: 50px 100px;
+    cursor: pointer;
+    padding: 50px 100px;
 }
 
 .image_lightbox_container img {
@@ -195,6 +196,7 @@ button i {
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
+    box-shadow: 5px 0px 0px 0px rgba(0, 0, 0, 0.2);
 }
 
 .image_lightbox_container {

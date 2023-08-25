@@ -3,7 +3,7 @@ class ProfilHeader {
         this._photographerProfil = photographerProfil;
     }
 
-    appendUserProfilHeader() { // la modale lightbox doit se faire ici, onclick sur l'image pour set la src de la balise img de la modale avec this.picture
+    appendUserProfilHeader() {
         const picture = this._photographerProfil.portrait;
 
         const imgDiv = document.querySelector(".img_container");

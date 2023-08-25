@@ -83,12 +83,39 @@ async function displayMedia(media, photographerProfil) {
             // nbLikesTotal.textContent = mediaModel.totalLikes;
         }
     })    
+
+    const filter = new RenderFilter(mediaPhoto);
+    filter.getTypeFilter();
+
     mediaPhoto.map(media => {
         const mediaToDisplay = createIframeLightbox(new MediaProfil(media));
         mediaPhotographer.appendChild(mediaToDisplay.getUserPhotoCardDOM());
     })
 
 }
+
+// async function filterCSS() {
+//     const buttonOption = document.querySelector(".chevron_button_filter");
+//     const chevron = document.getElementById("icon_filter");
+//     const option = document.querySelectorAll(".hide_option");
+
+//     buttonOption.addEventListener("click", () => {
+//         if(chevron.className == "fa-solid fa-chevron-down") {
+//             chevron.removeAttribute("class");
+//             chevron.setAttribute("class", "fa-solid fa-chevron-up");
+//             option.forEach(option => {
+//                 option.style.display = "block";
+//             })
+
+//         } else if(chevron.className == "fa-solid fa-chevron-up") {
+//             chevron.removeAttribute("class");
+//             chevron.setAttribute("class", "fa-solid fa-chevron-down");
+//             option.forEach(option => {
+//                 option.style.display = "none";
+//             })
+//         }
+//     })
+// }
 
 // async function buildTabMedia(media, photographerProfil) {
 //     let tabResult = [];
@@ -110,6 +137,8 @@ async function initProfilPage() {
 
     displayDataProfil(photographerProfil);
     displayMedia(media, photographerProfil);
+    // filterCSS();
+
     // buildTabMedia(media, photographerProfil);
 }
 

@@ -23,13 +23,18 @@
         <div class="select_container">
           <span>Trier par</span>
           <div role="listbox" name="sort_items" id="sort_items">
-            <div role="option" class="option border" value="popularite">
-              Popularité
-              <button><i class="fa-solid fa-chevron-up"></i></button>
-            <!-- <button><i class="fa-solid fa-chevron-down"></i></button> -->
+            <div role="option" class="option" value="popularite">
+              <button id="popularity_option" class="option_button">Popularité</button>
+              <button class="chevron_button_filter">
+                <i id="chevron_filter_list" class="fa-solid fa-chevron-down"></i>
+              </button>
             </div>
-            <div role="option" class="option border" value="date">Date</div>
-            <div role="option" class="option" value="titre">Titre</div>
+            <div role="option" class="option border hide_option" value="date">
+              <button id="date_option" class="option_button">Date</button>
+            </div>
+            <div role="option" class="option border hide_option" value="titre">
+              <button id="title_option" class="option_button">Titre</button>
+            </div>
           </div>
         </div>
         <div class="photos_container"></div>
@@ -106,6 +111,10 @@
 
       <!-- Decorator -->
       <script src="/scripts/decorator/iframelightboxmodal.js"></script>
+
+      <!-- Adapter Filter -->
+      <script src="scripts/filter/photosFilter.js"></script>
+      <script src="scripts/templates/renderFilter.js"></script>
       
       <!-- App Page -->
       <script src="/scripts/pages/photographer.js"></script>

@@ -9,7 +9,6 @@ class LightboxModal {
 
         const img = document.createElement( 'img' );
         const video = document.createElement( 'video' );
-        console.log("this.-media", this._media)
 
         if(element.target.tagName == 'IMG') {
             if(divModal.children.length > 0) {
