@@ -1,17 +1,30 @@
 class MediaProfil {
-    constructor(media) {
+    constructor(media, subject) {
         this._media = media;
+        this._subject = subject;
 
         this.imgDiv = document.createElement( 'div' );
         this.imgDiv.setAttribute("class", "image_container");
+        this.article = document.createElement( 'article' );
     }
 
     get media() {
         return this._media;
     }
 
+    submitLike() {
+        const that = this;
+
+        this.article.querySelector(".fa-heart").addEventListener("click", () => {
+            console.log("ceci est that", that)
+            console.log("ça c'est this mon cochon", this)
+            this._subject.fire();
+            // this._media.likes + 1;
+        })
+
+    }
+
     getUserPhotoCardDOM() {
-        const article = document.createElement( 'article' );
 
         // const imgDiv = document.createElement( 'div' );
         // imgDiv.setAttribute("class", "image_container");
@@ -38,6 +51,7 @@ class MediaProfil {
         heart.setAttribute("id", "heart_likes");
 
         const nbLike = document.createElement( 'p' );
+        nbLike.setAttribute("class", "like_content")
         nbLike.textContent = this._media.likes;
         
         // heart.addEventListener('click', () => {
@@ -61,9 +75,11 @@ class MediaProfil {
         cardDescrip.appendChild(titleCard);
         cardDescrip.appendChild(likeDiv);
 
-        article.appendChild(this.imgDiv);
-        article.appendChild(cardDescrip);
+        this.article.appendChild(this.imgDiv);
+        this.article.appendChild(cardDescrip);
 
-        return article;
+        this.submitLike()
+
+        return this.article;
     }
 }

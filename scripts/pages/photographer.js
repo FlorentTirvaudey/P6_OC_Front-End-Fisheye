@@ -36,22 +36,6 @@ async function getOnePhotographer() {
     return ({ photographerProfil });
 }
 
-// async function updateLikes(media, photographerProfil) {
-//     let totalLikes = 0;
-
-//     media.forEach(medias => {
-//         if(medias.photographerId == photographerProfil.id) {
-//             const mediaModel = new Media(medias, photographerProfil);
-//             totalLikes += mediaModel.likes;
-//             console.log("totalikes updateLikes", totalLikes)
-
-//         }
-//     })    
-
-//     return totalLikes;
-// }
-
-
 async function displayDataProfil(photographerProfil) {
     new ProfilPrice(photographerProfil).setPricePhotographerAside();
     new ProfilHeader(photographerProfil).appendUserProfilHeader();
@@ -65,6 +49,7 @@ async function displayMedia(media, photographerProfil) {
     
     let mediaPhoto = [];
 
+    
     media.map(medias => {
         if(medias.photographerId == photographerProfil.id) {
             if(medias.image) {
@@ -74,21 +59,30 @@ async function displayMedia(media, photographerProfil) {
             }
             // totalLikes += mediaModel.likes;
             // console.log("totalikes dans le foreach de display", totalLikes)
-
+            
             // const mediaDOM = mediaModel.getUserPhotoCardDOM();
             // mediaPhotographer.appendChild(mediaDOM);
-
+            
             // mediaModel.totalLikes += mediaModel.likes;
             // console.log("c'est quoi ça", mediaModel.totalLikes);
             // nbLikesTotal.textContent = mediaModel.totalLikes;
         }
     })    
+    const subject = new SubjectCounter();
+    const counter = new CounterLikes(mediaPhoto);
 
+    subject.subscribe(counter);
+    counter.totalLikes();
+
+    console.log("counter", counter)
+    console.log("les media dans photographer.js", mediaPhoto)
+    
     const filter = new RenderFilter(mediaPhoto);
     filter.getTypeFilter();
 
     mediaPhoto.map(media => {
-        const mediaToDisplay = createIframeLightbox(new MediaProfil(media));
+        // Passer mediaPhoto en params pour la lightbox et les button flèche ?
+        const mediaToDisplay = createIframeLightbox(new MediaProfil(media, subject), mediaPhoto);
         mediaPhotographer.appendChild(mediaToDisplay.getUserPhotoCardDOM());
     })
 
@@ -137,9 +131,6 @@ async function initProfilPage() {
 
     displayDataProfil(photographerProfil);
     displayMedia(media, photographerProfil);
-    // filterCSS();
-
-    // buildTabMedia(media, photographerProfil);
 }
 
 initProfilPage();
