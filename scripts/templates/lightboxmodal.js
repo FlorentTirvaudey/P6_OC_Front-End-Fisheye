@@ -21,8 +21,10 @@ class LightboxModal {
         this.container.innerHTML = " ";
     }
     
-    buildLightboxModal() {
+    buildLightboxModal(mediaToDisplay) {
         this.clearLightboxModal();
+        
+        this._media = mediaToDisplay
         this.modal.style.display = "flex";
 
         const divModal = document.createElement( 'div' );

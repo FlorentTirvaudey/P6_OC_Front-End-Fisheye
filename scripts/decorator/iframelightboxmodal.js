@@ -4,7 +4,7 @@ function createIframeLightbox(mediaProfil, mediaTab) {
     
     mediaProfil.imgDiv.addEventListener('click', () => {
         
-        iframe.buildLightboxModal();
+        iframe.buildLightboxModal(mediaProfil.media);
         console.log('iframe', mediaProfil.media)
         console.log('media dans iframe', mediaTab)
 
@@ -14,8 +14,8 @@ function createIframeLightbox(mediaProfil, mediaTab) {
             if(position == 0) {
                 position = mediaTab.length;
             }
-            iframe._media = mediaTab[position-1];
-            iframe.buildLightboxModal();
+            //iframe._media = ;
+            iframe.buildLightboxModal(mediaTab[position-1]);
             console.log("iframe left", iframe)
        })
     
@@ -25,8 +25,8 @@ function createIframeLightbox(mediaProfil, mediaTab) {
         if(position == mediaTab.length - 1) {
             position = -1;
         }
-        iframe._media = mediaTab[position+1];
-        iframe.buildLightboxModal();
+        //iframe._media = ;
+        iframe.buildLightboxModal(mediaTab[position+1]);
         console.log("iframe right", iframe)
         })
     })
