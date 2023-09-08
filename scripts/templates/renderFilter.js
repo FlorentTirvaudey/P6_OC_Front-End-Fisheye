@@ -1,6 +1,7 @@
 class RenderFilter {
-    constructor(pictures) {
+    constructor(pictures, subject) {
         this._pictures = pictures;
+        this._subject = subject;
 
         this.wrapper_pictures = document.querySelector(".photos_container");
         this.popularity_option = document.getElementById("popularity_option");
@@ -17,12 +18,8 @@ class RenderFilter {
 
         const filterExample = new PhotosFilter(this._pictures, type);
 
-        console.log("filter sans adapter", filterExample)
-        console.log("filter sans adapter", filterExample.makeFilter())
-
-
         filterExample.makeFilter().forEach(photos => {
-            const mediaToDisplay = createIframeLightbox(new MediaProfil(photos));
+            const mediaToDisplay = createIframeLightbox(new MediaProfil(photos, this._subject), this._pictures);
             this.wrapper_pictures.appendChild(mediaToDisplay.getUserPhotoCardDOM());
         })
     }

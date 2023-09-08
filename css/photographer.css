@@ -69,23 +69,6 @@
     margin-bottom: 20px;
 }
 
-/* .modal header .header_title {
-    font-size: 64px;
-    font-weight: normal;
-} */
-
-/* .modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
-}
-
-.modal header h3 {
-    font-size: 64px;
-    font-weight: normal;
-    text-align: center;
-} */
-
 form {
     display: flex;
     width: 100%;
@@ -156,7 +139,7 @@ button i {
 
 .display_modal .close {
     position: absolute;
-    right: 0;
+    right: 100px;
     top: 0;
     color: #901C1C;
     font-size: 3.0em;

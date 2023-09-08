@@ -6,6 +6,7 @@ class MediaProfil {
         this.imgDiv = document.createElement( 'div' );
         this.imgDiv.setAttribute("class", "image_container");
         this.article = document.createElement( 'article' );
+        this.nbLike = document.createElement( 'p' );
     }
 
     get media() {
@@ -13,33 +14,18 @@ class MediaProfil {
     }
 
     submitLike() {
-        const that = this;
-
         this.article.querySelector(".fa-heart").addEventListener("click", () => {
-            console.log("ceci est that", that)
-            console.log("ça c'est this mon cochon", this)
+            
+            if(!this._media.belike) {
+                this._media.setLikes(this._media.likes + 1);
+                this._media.setBelike(true);
+            }
+            this.nbLike.textContent = this._media.likes;
             this._subject.fire();
-            // this._media.likes + 1;
         })
-
     }
 
     getUserPhotoCardDOM() {
-
-        // const imgDiv = document.createElement( 'div' );
-        // imgDiv.setAttribute("class", "image_container");
-        // imgDiv.addEventListener('click', e => {
-        //     openElementInLightboxModal(e, this.title);
-        //     console.log("je suis l'élément e", this.image);
-
-        //     leftButton.addEventListener('click', () => {
-
-        //     })
-        //     rightButton.addEventListener('click', () => {
-                
-        //     })
-        // })
-
         const cardDescrip = document.createElement( 'div' );
         cardDescrip.setAttribute("class", "description_part");
 
@@ -50,17 +36,8 @@ class MediaProfil {
         heart.setAttribute("class", "fa-solid fa-heart");
         heart.setAttribute("id", "heart_likes");
 
-        const nbLike = document.createElement( 'p' );
-        nbLike.setAttribute("class", "like_content")
-        nbLike.textContent = this._media.likes;
-        
-        // heart.addEventListener('click', () => {
-        //     let likesUpdate = this.likes + 1;
-        //     nbLike.textContent = likesUpdate;
-        //     // let totalikesUpdate = this.totalLikes + 1;
-        //     // console.log("totallikes", nbLike.textContent)
-        //     // console.log("totallikes addeventlistener", totalikesUpdate)
-        // });
+        this.nbLike.setAttribute("class", "like_content")
+        this.nbLike.textContent = this._media.likes;
 
         const titleCard = document.createElement( 'p' );
         titleCard.textContent = this._media.title;
@@ -69,7 +46,7 @@ class MediaProfil {
         mediaType.setAttribute("src", this._media.path)
         this.imgDiv.appendChild(mediaType);
 
-        likeDiv.appendChild(nbLike);
+        likeDiv.appendChild(this.nbLike);
         likeDiv.appendChild(heart);
 
         cardDescrip.appendChild(titleCard);

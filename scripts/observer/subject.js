@@ -8,6 +8,6 @@ class SubjectCounter {
     }
 
     fire() {
-        this._observer.forEach(observers => observers.updateLikes());
+        this._observer.forEach(observers => observers.updateTotalLikes());
     }
 }

@@ -1,38 +1,47 @@
 function createIframeLightbox(mediaProfil, mediaTab) {
 
     const iframe = new LightboxModal(mediaProfil.media);
+    
+    mediaProfil.imgDiv.addEventListener('click', () => {
+        
+        iframe.buildLightboxModal();
+        console.log('iframe', mediaProfil.media)
+        console.log('media dans iframe', mediaTab)
 
-    // onclick ici pour gérer les events des buttons ?
-    // idée : faire un for dans le createLightBoxModal --> affiché de base
-    // l'img ou la video sur laquelle on a cliqué et puis gérer après les
-    // addEvent des flèches pour choisir qu'est-ce qu'on affiche après
-    // avoir créée une première modale lightbox.
-    // ==> peut être besoin d'une seconde fonction dans la classe
-    // LightboxModal pour évite de surcharger la fonction de création
-    //              +
-    // gérer les aria-labels quand on affiche les img ou video
-
-    // pas besoin de for finalement, seulement dans findPosition()
-
-    mediaProfil.imgDiv.addEventListener('click', element => {
-        iframe.createLightboxModal(element, mediaTab);
+        iframe._button_left.addEventListener('click', () => {
+            
+            let position = findPositionElement(iframe, mediaTab);
+            if(position == 0) {
+                position = mediaTab.length;
+            }
+            iframe._media = mediaTab[position-1];
+            iframe.buildLightboxModal();
+            console.log("iframe left", iframe)
+       })
+    
+       iframe._button_right.addEventListener('click', () => {
+            
+        let position = findPositionElement(iframe, mediaTab);
+        if(position == mediaTab.length - 1) {
+            position = -1;
+        }
+        iframe._media = mediaTab[position+1];
+        iframe.buildLightboxModal();
+        console.log("iframe right", iframe)
+        })
     })
-
+    
     return mediaProfil;
 }
 
-// function findPositionElement(mediaProfil, mediaTab) {
-//          for(....) {}
-//          return position
-// }
-
-// iFrame.FlecheDeGauche.AddEvent(....){
-//      int position = findPositionElemnt()
-//      
-//      createLightboxModal(mediaTab[position-1], MediaTab)
-//}
-
-// FlecheDeDroite.AddEvent(....){
-//      int position = findPositionElemnt()
-//      createLightboxModal(mediaTab[position+1], MediaTab)
-//}
+function findPositionElement(mediaProfil, mediaTab) {
+    let position;
+    
+    for(let i = 0; i < mediaTab.length; i++) {
+        if(mediaProfil._media._id == mediaTab[i]._id) {
+            position = i;
+        }
+    }
+    
+    return position;
+}

@@ -10,6 +10,7 @@ class MediaVideo {
         this._price = price;
         this._photographerProfil = photographerProfil;
         this._type = 'video';
+        this._belike = false;
     }
 
     get id() {
@@ -40,11 +41,23 @@ class MediaVideo {
         return this._type;
     }
 
+    get belike() {
+        return this._belike;
+    }
+
     get path() {
         const completName = this._photographerProfil.name;
         const nameSplit = completName.split(" ");
         const firstname = nameSplit[0];
 
         return `assets/images/Sample Photos/${firstname}/${this._video}`;
+    }
+
+    setLikes(param) {
+        this._likes = param;
+    }
+
+    setBelike(param) {
+        this._belike = param;
     }
 }

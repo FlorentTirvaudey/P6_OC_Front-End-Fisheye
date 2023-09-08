@@ -5,12 +5,11 @@ class PhotosFilter {
     }
 
     makeFilter() {
-        const filterPictures = [...this._pictures];
 
         if(this._type == "popularity") {
-            filterPictures.sort((a,b) => b.likes - a.likes);
+            this._pictures.sort((a,b) => b.likes - a.likes);
         } else if(this._type == "title") {
-            filterPictures.sort((a,b) => {
+            this._pictures.sort((a,b) => {
                 if(a.title < b.title) {
                     return -1;
                 }
@@ -21,10 +20,10 @@ class PhotosFilter {
             });
         } 
         else if(this._type == "date") {
-            filterPictures.sort((a,b) => {
+            this._pictures.sort((a,b) => {
                 return new Date(b.date) - new Date(a.date);
             })
         }
-        return filterPictures;
+        return this._pictures;
     }
 }
