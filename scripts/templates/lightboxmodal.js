@@ -6,15 +6,19 @@ class LightboxModal {
         this.modal = document.getElementById("lightbox_modal");
         this.modal_close = document.querySelector(".close");
 
-        this.container = document.querySelector(".card_container")
+        this.container = document.querySelector(".card_container");
+
+        this.wrapper_page = document.getElementById("main");
     }
     
     closeLightboxModal() {
-        // const modal = document.getElementById("lightbox_modal");
         this.modal_close.addEventListener('click', () => {
-            this.modal.style.display = "none";
-            this.clearLightboxModal();
-        })
+
+        this.modal.style.display = "none";
+        this.clearLightboxModal();
+        this.modal.setAttribute("aria-hidden", "true");
+        this.wrapper_page.setAttribute("aria-hidden", "false");
+        });
     }
 
     clearLightboxModal() {
@@ -23,6 +27,9 @@ class LightboxModal {
     
     buildLightboxModal(mediaToDisplay) {
         this.clearLightboxModal();
+        this.modal.setAttribute("aria-hidden", "false");
+        this.wrapper_page.setAttribute("aria-hidden", "true");
+        this.modal_close.focus();
         
         this._media = mediaToDisplay
         this.modal.style.display = "flex";
@@ -32,25 +39,22 @@ class LightboxModal {
     
         const titleMedia = document.createElement( 'p' );
         titleMedia.setAttribute("class", "title_card");
+        titleMedia.setAttribute("id", "titre");
 
         const img = document.createElement( 'img' );
         const video = document.createElement( 'video' );
 
-        // console.log("this_media dans le build", this._media_image)
-
         if(this._media._image) {
-            // if(divModal.children.length > 0) {
-            //     divModal.removeChild(divModal.children[0]);
-            // }
             img.setAttribute("src", this._media.path);
+            img.setAttribute("alt", this._media.title);
+            img.setAttribute("aria-describedby", "titre");
             divModal.appendChild(img);
             titleMedia.innerHTML = this._media.title;
 
         } else if(this._media._video) {
-            // if(divModal.children.length > 0) {
-            //     divModal.removeChild(divModal.children[0]);
-            // }
             video.setAttribute("src", this._media.path);
+            video.setAttribute("alt", this._media.title);
+            video.setAttribute("aria-describedby", "titre");
             divModal.appendChild(video);
             titleMedia.innerHTML = this._media.title;
             }
@@ -58,9 +62,17 @@ class LightboxModal {
             this.container.appendChild(divModal);
             this.container.appendChild(titleMedia);
 
-        this.closeLightboxModal()
+            this.closeLightboxModal();
+        // this.modal_close.addEventListener('click', () => {
+        //     this.closeLightboxModal();
+        // });
 
-        // return this.container;
+        // this.modal.addEventListener("keydown", e => {
+        //     if(e.key === "Escape") {
+        //         this.closeLightboxModal();
+        //     }
+        // });
     }
+
 
 }

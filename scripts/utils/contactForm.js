@@ -4,6 +4,7 @@ function displayModal() {
     let name = urlParams.get('name');
 
     const modal = document.getElementById("contact_modal");
+    modal.setAttribute("aria-hidden", "false");
     const namePhotographer = document.querySelector(".header_title");
 	modal.style.display = "block";
 
@@ -12,6 +13,7 @@ function displayModal() {
 
 function closeModal() {
     const modal = document.getElementById("contact_modal");
+    modal.setAttribute("aria-hidden", "true");
     modal.style.display = "none";
 }
 

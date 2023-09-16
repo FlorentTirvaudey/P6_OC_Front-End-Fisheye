@@ -5,6 +5,7 @@ class MediaProfil {
 
         this.imgDiv = document.createElement( 'div' );
         this.imgDiv.setAttribute("class", "image_container");
+        this.imgDiv.setAttribute("aria-label", "ouvrir la lightbox modal");
         this.article = document.createElement( 'article' );
         this.nbLike = document.createElement( 'p' );
     }
@@ -35,15 +36,19 @@ class MediaProfil {
         const heart = document.createElement( 'i' );
         heart.setAttribute("class", "fa-solid fa-heart");
         heart.setAttribute("id", "heart_likes");
+        heart.setAttribute("aria-label", "ajoutez un like à cette image");
 
         this.nbLike.setAttribute("class", "like_content")
         this.nbLike.textContent = this._media.likes;
 
-        const titleCard = document.createElement( 'p' );
+        const titleCard = document.createElement( 'desc' );
+        titleCard.setAttribute("id", "title_card");
         titleCard.textContent = this._media.title;
 
         const mediaType = document.createElement( this._media.type );
-        mediaType.setAttribute("src", this._media.path)
+        mediaType.setAttribute("src", this._media.path);
+        mediaType.setAttribute("alt", this._media.title);
+        mediaType.setAttribute("aria-describedby", "title_card")
         this.imgDiv.appendChild(mediaType);
 
         likeDiv.appendChild(this.nbLike);

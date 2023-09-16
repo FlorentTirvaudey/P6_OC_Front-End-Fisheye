@@ -17,6 +17,7 @@ class ProfilPrice {
 
         const heartAside = document.createElement( 'i' );
         heartAside.setAttribute("class", "fa-solid fa-heart");
+        heartAside.setAttribute("aria-hidden", "true");
 
         likesAside.appendChild(this.totalLikes);
         likesAside.appendChild(heartAside);

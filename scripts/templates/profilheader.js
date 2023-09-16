@@ -14,6 +14,7 @@ class ProfilHeader {
 
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
+        img.setAttribute("alt", this._photographerProfil.name)
 
         if(this._photographerProfil.name != "Tracy Galindo") {
             img.setAttribute("class", "img_modify");

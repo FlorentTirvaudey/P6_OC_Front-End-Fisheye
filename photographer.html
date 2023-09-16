@@ -9,13 +9,13 @@
     <title>Fisheye - photographe </title>
   </head>
   <body>
-    <header>
+    <header aria-hidden="true">
       <img src="assets/images/logo.png" class="logo" />
     </header>
-    <main id="main" class="main_profil_page">
+    <main id="main" class="main_profil_page" aria-hidden="false">
       <section class="photograph-header">
         <div class="description_profil_content"></div>
-        <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
+        <button class="contact_button" onclick="displayModal()" aria-label="ouvrir la modal de contact">Contactez-moi</button>
         <div class="img_container">
         </div>
       </section>
@@ -24,33 +24,28 @@
           <span>Trier par</span>
           <div role="listbox" name="sort_items" id="sort_items">
             <div role="option" class="option" value="popularite">
-              <button id="popularity_option" class="option_button">Popularité</button>
-              <button class="chevron_button_filter">
+              <button id="popularity_option" class="option_button" aria-label="trier les images par popularité">Popularité</button>
+              <button class="chevron_button_filter" aria-label="rendre visible/cacher les différentes options de tri des photos">
                 <i id="chevron_filter_list" class="fa-solid fa-chevron-down"></i>
               </button>
             </div>
             <div role="option" class="option border hide_option" value="date">
-              <button id="date_option" class="option_button">Date</button>
+              <button id="date_option" class="option_button" aria-label="trier les images par date">Date</button>
             </div>
             <div role="option" class="option border hide_option" value="titre">
-              <button id="title_option" class="option_button">Titre</button>
+              <button id="title_option" class="option_button" aria-label="trier les images par ordre alphabétique">Titre</button>
             </div>
           </div>
         </div>
         <div class="photos_container"></div>
       </section>
-      <aside class="info_container">
-        <!-- <div class="likes_aside">
-          <span class="nb_likes_total"></span>
-          <i class="fa-solid fa-heart"></i> -->
-        </div>
-      </aside>
+      <aside class="info_container"></aside>
     </main>
-    <div id="contact_modal">
+    <div id="contact_modal" aria-hidden="true" role="dialog" aria-describedby="Affichage de la modal de contact" aria-modal="true">
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" aria-label="fermer la modal"/>
         </header>
         <div class="header_title">
         </div>
@@ -71,17 +66,17 @@
 						<label>Votre message</label>
 						<textarea name="textarea" cols="30" rows="10"></textarea>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" aria-label="soumettre le formulaire">Envoyer</button>
 				</form>
 			</div>
 		</div>
-    <div id="lightbox_modal">
+    <div id="lightbox_modal" aria-hidden="true" role="dialog" aria-describedby="Affichage de l'image dans la modal" aria-modal="true">
       <div class="display_modal">
         <i class="fa-solid fa-xmark close"></i>
         <div class="lightbox_container">
-          <button class="left_button"><i class="fa-solid fa-chevron-left chevron"></i></button>
+          <button class="left_button" aria-label="afficher l'image précédente"><i class="fa-solid fa-chevron-left chevron" aria-hidden="true"></i></button>
           <div class="card_container"></div>
-          <button class="right_button"><i class="fa-solid fa-chevron-right chevron"></i></button>
+          <button class="right_button" aria-label="afficher l'image suivante"><i class="fa-solid fa-chevron-right chevron" aria-hidden="true"></i></button>
         </div>
       </div>
     </div>
