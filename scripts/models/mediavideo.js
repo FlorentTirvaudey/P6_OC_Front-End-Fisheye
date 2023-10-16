@@ -1,63 +1,63 @@
 class MediaVideo {
-    constructor(data, photographerProfil) {
-        const { id, photographerId, title, video, likes, date, price } = data;
-        this._id = id;
-        this._photographerId = photographerId;
-        this._title = title;
-        this._video = video;
-        this._likes = likes;
-        this._date = date;
-        this._price = price;
-        this._photographerProfil = photographerProfil;
-        this._type = 'video';
-        this._belike = false;
-    }
+	constructor(data, photographerProfil) {
+		const { id, photographerId, title, video, likes, date, price } = data;
+		this._id = id;
+		this._photographerId = photographerId;
+		this._title = title;
+		this._video = video;
+		this._likes = likes;
+		this._date = date;
+		this._price = price;
+		this._photographerProfil = photographerProfil;
+		this._type = "video";
+		this._belike = false;
+	}
 
-    get id() {
-        return this._id;
-    }
+	get id() {
+		return this._id;
+	}
 
-    get photographerId() {
-        return this._id;
-    }
+	get photographerId() {
+		return this._id;
+	}
 
-    get title() {
-        return this._title;
-    }
+	get title() {
+		return this._title;
+	}
 
-    get likes() {
-        return this._likes;
-    }
+	get likes() {
+		return this._likes;
+	}
 
-    get date() {
-        return this._date;
-    }
+	get date() {
+		return this._date;
+	}
 
-    get price() {
-        return this._price;
-    }
-    
-    get type() {
-        return this._type;
-    }
+	get price() {
+		return this._price;
+	}
 
-    get belike() {
-        return this._belike;
-    }
+	get type() {
+		return this._type;
+	}
 
-    get path() {
-        const completName = this._photographerProfil.name;
-        const nameSplit = completName.split(" ");
-        const firstname = nameSplit[0];
+	get belike() {
+		return this._belike;
+	}
 
-        return `assets/images/Sample Photos/${firstname}/${this._video}`;
-    }
+	get path() {
+		const completName = this._photographerProfil.name;
+		const nameSplit = completName.split(" ");
+		const firstname = nameSplit[0];
 
-    setLikes(param) {
-        this._likes = param;
-    }
+		return `assets/images/Sample Photos/${firstname}/${this._video}`;
+	}
 
-    setBelike(param) {
-        this._belike = param;
-    }
+	setLikes(param) {
+		this._likes = param;
+	}
+
+	setBelike(param) {
+		this._belike = param;
+	}
 }

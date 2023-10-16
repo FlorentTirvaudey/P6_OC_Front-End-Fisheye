@@ -1,66 +1,59 @@
+function addEventListeners(element, events, callback) {
+	events.forEach(e => {
+		if(e === "keydown") {
+			element.addEventListener(e, event => {
+				console.log("event.key ici", event.key);
+				if(event.key === "Enter") {
+					callback(event);
+				}
+			});
+		} else {
+			element.addEventListener(e, callback);
+		}
+	});
+}
+
 function createIframeLightbox(mediaProfil, mediaTab) {
 
-    const iframe = new LightboxModal(mediaProfil.media);
-    
-    mediaProfil.imgDiv.addEventListener('click', () => {
-        
-        iframe.buildLightboxModal(mediaProfil.media);
+	addEventListeners(mediaProfil.imgDiv, ["click","keydown"], () => {
+		const iframe = new LightboxModal(mediaProfil.media);
+		
+		iframe.buildLightboxModal(mediaProfil.media);
+		iframe.modal.showModal();
 
-        // previousSwitch(iframe, mediaTab);
-        iframe._button_left.addEventListener('click', () => {
-            
-            let position = findPositionElement(iframe, mediaTab);
-            if(position == 0) {
-                position = mediaTab.length;
-            }
-            iframe.buildLightboxModal(mediaTab[position-1]);
-       })
+		// previousSwitch(iframe, mediaTab);
+		iframe._button_left.addEventListener("click", () => {
+			
+			let position = findPositionElement(iframe, mediaTab);
+			if(position == 0) {
+				position = mediaTab.length;
+			}
+			iframe.buildLightboxModal(mediaTab[position-1]);
+			iframe.modal.showModal();
+		});
 
-    //    iframe.modal.addEventListener('keydown', e => {
-    //     console.log("test")
+		iframe._button_right.addEventListener("click", () => {
+			
+			let position = findPositionElement(iframe, mediaTab);
+			if(position == mediaTab.length - 1) {
+				position = -1;
+			}
+			iframe.buildLightboxModal(mediaTab[position+1]);
+			iframe.modal.showModal();
+		});
+	});
 
-    //     if(e.key === "ArrowLeft") {
-    //         console.log("test de la touche gauche")
-    //         let position = findPositionElement(iframe, mediaTab);
-    //         if(position == 0) {
-    //             position = mediaTab.length;
-    //         }
-    //         iframe.buildLightboxModal(mediaTab[position-1]);
-    //     }
-    //    })
-    
-       iframe._button_right.addEventListener('click', () => {
-            
-        let position = findPositionElement(iframe, mediaTab);
-        if(position == mediaTab.length - 1) {
-            position = -1;
-        }
-        iframe.buildLightboxModal(mediaTab[position+1]);
-        })
-    })
-    
-    return mediaProfil;
+	return mediaProfil;
 }
 
 function findPositionElement(mediaProfil, mediaTab) {
-    let position;
-    
-    for(let i = 0; i < mediaTab.length; i++) {
-        if(mediaProfil._media._id == mediaTab[i]._id) {
-            position = i;
-        }
-    }
-    
-    return position;
-}
+	let position;
 
-// function previousSwitch(iframe, mediaTab) {
-//     iframe._button_left.addEventListener('click', () => {
-            
-//         let position = findPositionElement(iframe, mediaTab);
-//         if(position == 0) {
-//             position = mediaTab.length;
-//         }
-//         iframe.buildLightboxModal(mediaTab[position-1]);
-//    })
-// }
+	for(let i = 0; i < mediaTab.length; i++) {
+		if(mediaProfil._media._id == mediaTab[i]._id) {
+			position = i;
+		}
+	}
+
+	return position;
+}

@@ -1,5 +1,14 @@
+dialog:modal {
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+::backdrop {
+    /* background-color: white; */
+}
+
 #contact_modal {
-    display: none;
+    /* display: none; */
     position: fixed;
     top: 0;
     left: 0;
@@ -8,6 +17,7 @@
     z-index: 100;
     background-color: rgba(209, 209, 209, 0.5);
     padding-top: 12px;
+    border: none;
 }
 
 .photograph-header {
@@ -110,16 +120,24 @@ form textarea {
 *
 */
 #lightbox_modal {
-    display: none;
+    /* display: none; */
     position: fixed;
     width: 100%;
     height: 100%;
-    background-color: white;
+    background-color: rgba(255, 255, 255);
     z-index: 1000;
     top: 0;
     left: 0;
+    bottom: 0;
+    right: 0;
     justify-content: center;
     align-items: center;
+    border: none;
+}
+
+#lightbox_modal[open]:not(:focus-within) {
+    background-color: rgba(255, 255, 254);
+    transition: background-color 0.01s; 
 }
 
 .display_modal {
@@ -139,8 +157,8 @@ button i {
 
 .display_modal .close {
     position: absolute;
-    right: 100px;
-    top: 0;
+    right: 250px;
+    top: 10px;
     color: #901C1C;
     font-size: 3.0em;
     z-index: 1000;
@@ -158,7 +176,7 @@ button i {
 .lightbox_container .title_card {
     color: #901C1C;
     font-size: 1.5em;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .lightbox_container .chevron {

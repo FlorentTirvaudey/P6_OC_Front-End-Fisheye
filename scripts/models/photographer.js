@@ -1,4 +1,4 @@
-class Photographer {
+export class Photographer {
 	constructor(data) {
 		const { id, name, city, country, tagline, price, portrait } = data;
 		this._id = id;
