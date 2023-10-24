@@ -47,7 +47,7 @@ class MediaProfil {
 		cardDescrip.setAttribute("class", "description_part");
 
 		if(this._media.type === "video") {
-			this.imgDiv.setAttribute("tabindex", "1");
+			this.imgDiv.setAttribute("tabindex", "-1");
 		}
 
 		const likeDiv = document.createElement( "div" );

@@ -45,7 +45,7 @@
 			<div class="modal">
 				<header>
           <h2>Contactez-moi</h2>
-          <button><img tabindex="0" src="assets/icons/close.svg" onclick="closeModal()" class="close_contact_modal" aria-label="fermer la modal"/></button>
+          <img src="assets/icons/close.svg" class="close_contact_modal" aria-label="fermer la modal"/>
         </header>
         <div class="header_title">
         </div>
@@ -66,13 +66,13 @@
 						<label>Votre message</label>
 						<textarea name="textarea" cols="30" rows="10"></textarea>
 					</div>
-          <button class="contact_button" aria-label="soumettre le formulaire">Envoyer</button>
+          <button form="myForm" class="contact_button" aria-label="soumettre le formulaire">Envoyer</button>
 				</form>
 			</div>
 		</dialog>
     <dialog id="lightbox_modal" aria-hidden="true" aria-labelledby="La Modale" aria-describedby="Affichage de l'image dans la modal" >
       <div class="display_modal">
-        <button><i tabindex="0" class="fa-solid fa-xmark close" aria-hidden="true"></i></button>
+        <button><i class="fa-solid fa-xmark close" aria-hidden="true"></i></button>
         <div class="lightbox_container">
           <button class="left_button" aria-label="afficher l'image précédente"><i class="fa-solid fa-chevron-left chevron" aria-hidden="true"></i></button>
           <div class="card_container"></div>

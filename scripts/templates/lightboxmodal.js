@@ -10,20 +10,6 @@ class LightboxModal {
 
 		this.wrapper_page = document.getElementById("main");
 	}
-
-	addEventListeners(element, events, callback) {
-		events.forEach(e => {
-			if(e === "keydown") {
-				element.addEventListener(e, event => {
-					if(event.key === "Enter") {
-						callback(event);
-					}
-				});
-			} else {
-				element.addEventListener(e, callback);
-			}
-		});
-	}
 	
 	closeLightboxModal() {
 		this.modal.close();
@@ -70,7 +56,7 @@ class LightboxModal {
 		this.container.appendChild(divModal);
 		this.container.appendChild(titleMedia);
 
-		this.addEventListeners(this.modal_close, ["click", "keydown"], () => {
+		this.modal_close.addEventListener("click", () => {
 			this.closeLightboxModal();
 		});
 	}
