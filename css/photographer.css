@@ -203,6 +203,9 @@ button i {
 .image_lightbox_container {
     height: 100%;
     width: 1000px;
+}
+
+.image_lightbox_container video {
     cursor: pointer;
 }
 
