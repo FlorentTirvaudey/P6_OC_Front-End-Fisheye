@@ -2,7 +2,6 @@ function addEventListeners(element, events, callback) {
 	events.forEach(e => {
 		if(e === "keydown") {
 			element.addEventListener(e, event => {
-				console.log("event.key ici", event.key);
 				if(event.key === "Enter") {
 					callback(event);
 				}
@@ -21,7 +20,6 @@ function createIframeLightbox(mediaProfil, mediaTab) {
 		iframe.buildLightboxModal(mediaProfil.media);
 		iframe.modal.showModal();
 
-		// previousSwitch(iframe, mediaTab);
 		iframe._button_left.addEventListener("click", () => {
 			
 			let position = findPositionElement(iframe, mediaTab);

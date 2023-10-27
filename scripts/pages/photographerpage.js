@@ -1,12 +1,3 @@
-import { Photographer } from "../models/photographer";
-import { MediaProfil } from "../templates/mediaprofil";
-import { MediaFactory } from "../factories/mediafactory";
-import { ProfilPrice } from "../templates/profilprice";
-import { ProfilHeader } from "../templates/profilheader";
-import { createIframeLightbox } from "../decorator/iframelightboxmodal";
-import { RenderFilter } from "../templates/renderFilter";
-import { SubjectCounter } from "../observer/subject";
-
 async function fetchData() {
 	try {
 		const response = await fetch("data/photographers.json");
@@ -64,19 +55,14 @@ async function displayMedia(media, photographerProfil) {
 	const resultOfTotalLikes = getTotalLikes(mediaPhoto);
 
 	const subject = new SubjectCounter();
-	// const counter = new CounterLikes(mediaPhoto);
 
 	const counterLikes = new ProfilPrice(photographerProfil, mediaPhoto, resultOfTotalLikes);
-	//
+
 	counterLikes.setPricePhotographerAside();
-	//
+
 	new ProfilHeader(photographerProfil).appendUserProfilHeader();
 
-	// subject.subscribe(counter);
 	subject.subscribe(counterLikes);
-
-	// console.log("counter", counterLikes);
-	// console.log("les media dans photographer.js", mediaPhoto);
 
 	const filter = new RenderFilter(mediaPhoto, subject);
 	filter.getTypeFilter();
@@ -91,7 +77,6 @@ async function displayMedia(media, photographerProfil) {
 function getTotalLikes(mediaPhoto) {
 	let total = 0;
 	mediaPhoto.map(media => total += media._likes);
-	console.log("total dans l'app", total);
 	return total;
 }
 
