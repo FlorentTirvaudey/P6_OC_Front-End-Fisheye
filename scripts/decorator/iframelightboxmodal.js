@@ -1,3 +1,6 @@
+/* global LightboxModal */
+/* exported createIframeLightbox */
+
 function addEventListeners(element, events, callback) {
 	events.forEach(e => {
 		if(e === "keydown") {

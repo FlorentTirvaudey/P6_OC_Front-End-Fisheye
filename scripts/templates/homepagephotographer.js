@@ -1,3 +1,5 @@
+/* exported HomepagePhotographer */
+
 class HomepagePhotographer {
 	constructor(photographers) {
 		this._photographers = photographers;

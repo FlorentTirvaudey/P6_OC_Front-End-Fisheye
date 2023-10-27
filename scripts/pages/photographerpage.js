@@ -1,3 +1,12 @@
+/* global MediaFactory */
+/* global Photographer */
+/* global SubjectCounter */
+/* global ProfilPrice */
+/* global ProfilHeader */
+/* global RenderFilter */
+/* global createIframeLightbox */
+/* global MediaProfil */
+
 async function fetchData() {
 	try {
 		const response = await fetch("data/photographers.json");

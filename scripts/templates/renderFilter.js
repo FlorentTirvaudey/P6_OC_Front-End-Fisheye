@@ -1,3 +1,8 @@
+/* global PhotosFilter */
+/* global createIframeLightbox */
+/* global MediaProfil */
+/* exported RenderFilter */
+
 class RenderFilter {
 	constructor(pictures, subject) {
 		this._pictures = pictures;

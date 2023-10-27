@@ -1,3 +1,5 @@
+/* exported ProfilPrice */
+
 class ProfilPrice {
 	constructor(photographerProfil, mediaPhoto, result) {
 		this._photographerProfil = photographerProfil;

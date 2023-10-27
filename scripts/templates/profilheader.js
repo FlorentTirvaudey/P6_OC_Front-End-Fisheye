@@ -1,3 +1,5 @@
+/* exported ProfilHeader */
+
 class ProfilHeader {
 	constructor(photographerProfil) {
 		this._photographerProfil = photographerProfil;

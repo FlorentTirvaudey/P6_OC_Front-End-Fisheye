@@ -1,3 +1,5 @@
+/* exported MediaImage */
+
 class MediaImage {
 	constructor(data, photographerProfil) {
 		const { id, photographerId, title, image, likes, date, price } = data;

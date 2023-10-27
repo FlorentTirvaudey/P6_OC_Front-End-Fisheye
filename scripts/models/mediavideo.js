@@ -1,3 +1,5 @@
+/* exported MediaVideo */
+
 class MediaVideo {
 	constructor(data, photographerProfil) {
 		const { id, photographerId, title, video, likes, date, price } = data;

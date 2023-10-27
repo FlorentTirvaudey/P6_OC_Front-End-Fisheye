@@ -1,3 +1,6 @@
+/* global Photographer */
+/* global HomepagePhotographer */
+
 async function fetchData() {
 	try {
 		const response = await fetch("data/photographers.json");

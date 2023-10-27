@@ -1,3 +1,5 @@
+/* exported MediaProfil */
+
 class MediaProfil {
 	constructor(media, subject) {
 		this._media = media;

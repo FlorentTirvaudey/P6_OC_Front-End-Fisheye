@@ -1,3 +1,5 @@
+/* exported LightboxModal */
+
 class LightboxModal {
 	constructor(media) {
 		this._media = media;

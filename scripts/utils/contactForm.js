@@ -1,7 +1,10 @@
-const close = document.querySelector(".close_contact_modal");
+/* exported displayModal */
+/* exported submitForm */
+
+const closeModal = document.querySelector(".close_contact_modal");
 const modal = document.getElementById("contact_modal");
 
-close.addEventListener("click", () => {
+closeModal.addEventListener("click", () => {
 	modal.close();
 	modal.setAttribute("aria-hidden", "true");
 });

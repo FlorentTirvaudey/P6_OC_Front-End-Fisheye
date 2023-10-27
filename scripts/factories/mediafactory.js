@@ -1,3 +1,7 @@
+/* global MediaImage */
+/* global MediaVideo */
+/* exported MediaFactory */
+
 class MediaFactory {
 	constructor(data, photographerProfil, type) {
 		if(type === "image") {

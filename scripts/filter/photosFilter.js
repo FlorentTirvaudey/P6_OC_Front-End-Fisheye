@@ -1,3 +1,5 @@
+/* exported PhotosFilter */
+
 class PhotosFilter {
 	constructor(pictures, type) {
 		this._pictures = pictures;

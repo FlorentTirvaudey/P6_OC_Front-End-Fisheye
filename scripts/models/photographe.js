@@ -1,3 +1,5 @@
+/* exported Photographer */
+
 class Photographer {
 	constructor(data) {
 		const { id, name, city, country, tagline, price, portrait } = data;

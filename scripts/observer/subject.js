@@ -1,3 +1,5 @@
+/* exported SubjectCounter */
+
 class SubjectCounter {
 	constructor() {
 		this._observer = [];
